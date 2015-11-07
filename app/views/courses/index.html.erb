@@ -4,7 +4,7 @@
 var xmlhttp = new XMLHttpRequest();
 var access_token = "e35d5ffd6583386d1d06cd206ac9f35b"
 var query = "ECE%20-%20Electrical%20%26%20Computer%20Egr"
-var url = "";
+var url = "ece.txt";
 
 xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -12,9 +12,10 @@ xmlhttp.onreadystatechange = function() {
         myFunction(myArr);
     }
 }
-xmlhttp.open("GET", "https://streamer.oit.duke.edu/curriculum/courses/subject/"+query+"?access_token="+access_token, true);
-xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
-xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+//xmlhttp.open("GET", "https://streamer.oit.duke.edu/curriculum/courses/subject/"+query+"?access_token="+access_token, true);
+//xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+//xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
+xmlhttp.open("GET", url, true);
 xmlhttp.send();
 
 function myFunction(arr) {
@@ -29,6 +30,19 @@ function myFunction(arr) {
 </script>
 
 <h1>Listing courses</h1>
+<% directory = 'app/assets/javascripts/json' %>
+<% Dir.foreach(directory) do |x| %>
+	<% next if x == '.' or x == '..' %>
+	<% file = File.read(directory+'/'+x) %>
+	<%= x %>
+	<br>
+	<% data_hash = JSON.parse(file) %>
+	<% arr=data_hash["ssr_get_courses_resp"]["course_search_result"]["subjects"]["subject"]["course_summaries"]["course_summary"] %>
+	<% arr.each do |child| %>
+		<%= child["catalog_nbr"] %>
+	<% end %>
+	<br>
+<% end %>
 
 <table>
   <thead>
