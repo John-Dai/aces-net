@@ -2,7 +2,9 @@
 
 <script>
 var xmlhttp = new XMLHttpRequest();
-var url = "https://streamer.oit.duke.edu/curriculum/courses/subject/ECE%20-%20Electrical%20%26%20Computer%20Egr?access_token=e35d5ffd6583386d1d06cd206ac9f35b";
+var access_token = "e35d5ffd6583386d1d06cd206ac9f35b"
+var query = "ECE%20-%20Electrical%20%26%20Computer%20Egr"
+var url = "";
 
 xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -10,7 +12,9 @@ xmlhttp.onreadystatechange = function() {
         myFunction(myArr);
     }
 }
-xmlhttp.open("GET", url, true);
+xmlhttp.open("GET", "https://streamer.oit.duke.edu/curriculum/courses/subject/"+query+"?access_token="+access_token, true);
+xmlhttp.setRequestHeader('Access-Control-Allow-Headers', '*');
+xmlhttp.setRequestHeader('Access-Control-Allow-Origin', '*');
 xmlhttp.send();
 
 function myFunction(arr) {
