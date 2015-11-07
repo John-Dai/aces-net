@@ -2,7 +2,7 @@
 
 <script>
 var xmlhttp = new XMLHttpRequest();
-var url = "myTutorials.txt";
+var url = "https://streamer.oit.duke.edu/curriculum/courses/subject/ECE%20-%20Electrical%20%26%20Computer%20Egr?access_token=e35d5ffd6583386d1d06cd206ac9f35b";
 
 xmlhttp.onreadystatechange = function() {
     if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
@@ -20,7 +20,7 @@ function myFunction(arr) {
         out += '<a href="' + arr[i].url + '">' + 
         arr[i].display + '</a><br>';
     }
-    document.getElementById("id01").innerHTML = out;
+    document.getElementById("id01").innerHTML = "test";
 }
 </script>
 
