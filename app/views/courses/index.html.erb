@@ -61,6 +61,7 @@ function myFunction(arr) {
 
   <tbody>
     <% @courses.each do |course| %>
+    	<% if !course.student_id.nil? || course.student_id = current_student.id %>
       <tr>
         <td><%= course.subject %></td>
         <td><%= course.course_number %></td>
@@ -69,10 +70,10 @@ function myFunction(arr) {
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
+      <% end %>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Course', new_course_path %>
