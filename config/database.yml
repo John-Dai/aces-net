@@ -35,6 +35,6 @@ production:
   encoding: utf8
   database: acesnet_prod_db
   pool: 5
-  username: root
+  username: bitnami
   password:
-  socket: /tmp/mysql.sock
+  socket: /opt/bitnami/mysql/tmp/mysql.sock
