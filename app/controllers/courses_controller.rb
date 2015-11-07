@@ -25,7 +25,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
   	@courses =  Course.all
-    @course = Course.new(course_params)
+    @course = current_student.courses.new(course_params)
     @courses.each do |c|
     	if c.subject==@course.subject && c.course_number==@course.course_number
     		respond_to do |format|
