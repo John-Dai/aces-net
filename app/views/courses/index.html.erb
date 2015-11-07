@@ -39,7 +39,12 @@ function myFunction(arr) {
 	<% data_hash = JSON.parse(file) %>
 	<% arr=data_hash["ssr_get_courses_resp"]["course_search_result"]["subjects"]["subject"]["course_summaries"]["course_summary"] %>
 	<% arr.each do |child| %>
+		<%= child["subject"] %>
 		<%= child["catalog_nbr"] %>
+		<%= child["course_title_long"] %>
+		<% params = ActionController::Parameters.new(course: {subject: child["subject"], course_number: child["catalog_nbr"], title: child["course_title_long"]}) %>
+		<%= button_to "Add", action: "create", params: params %>
+		<br>
 	<% end %>
 	<br>
 <% end %>

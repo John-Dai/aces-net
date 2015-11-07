@@ -24,8 +24,17 @@ class CoursesController < ApplicationController
   # POST /courses
   # POST /courses.json
   def create
+  	@courses =  Course.all
     @course = Course.new(course_params)
-
+    @courses.each do |c|
+    	if c.subject==@course.subject && c.course_number==@course.course_number
+    		respond_to do |format|
+    			format.html { redirect_to @course, notice: 'Course was successfully created.' }
+    			format.json { render :show, status: :created, location: @course }
+    			break
+    		end
+      end
+    end
     respond_to do |format|
       if @course.save
         format.html { redirect_to @course, notice: 'Course was successfully created.' }
