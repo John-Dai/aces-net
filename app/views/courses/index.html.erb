@@ -61,7 +61,7 @@ function myFunction(arr) {
 
   <tbody>
     <% @courses.each do |course| %>
-    	<% if !course.student_id.nil? || course.student_id = current_student.id %>
+    	<% if course.student_id = current_student.id %>
       <tr>
         <td><%= course.subject %></td>
         <td><%= course.course_number %></td>
