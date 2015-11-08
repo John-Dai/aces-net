@@ -123,7 +123,7 @@ function myFunction(arr) {
   </thead>
   <tbody>
     <% @people.each do |person| %>
-    	<% if person.id!=current_person.id && person.email.start_with?(params[:user])%>
+    	<% if person.id!=nil && person.email!=nil && params[:user]!=nil && person.id!=current_person.id && person.email.start_with?(params[:user])%>
       <tr>
         <td><%= person.email %></td>
         <td><%= button_to "Add", action: "addfriend", id_params: person.id %></td>

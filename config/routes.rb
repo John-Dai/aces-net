@@ -1,12 +1,13 @@
 Rails.application.routes.draw do
   resources :dudes
 
+  #devise_for :people
   devise_for :people
   resources :people
 
   devise_for :students
   resources :students
-
+#get "/logout" => "devise/sessions#destroy", :as => :destroy_user_session
   devise_for :users
   resources :courses
   post 'courses/addfriend', :to => 'courses#addfriend'
