@@ -29,6 +29,27 @@ function myFunction(arr) {
 }
 </script>
 
+<h1>Incoming Friend Requests</h1>
+<% current_person.pending_invited_by.each do |p| %>
+	<%= p.email %>
+	<%= button_to "Accept", action: "acceptfriend", id_params: p.id %>
+	<br>
+<% end %>
+<h1>Sent Friend Requests</h1>
+<% current_person.pending_invited.each do |p| %>
+	<%= p.email %>
+	<br>
+<% end %>
+<h1>My Friends</h1>
+<% current_person.friends.each do |p| %>
+	<%= p.email %>
+	<% @courses.each do |c| %>
+		<% if c.person_id==p.id %>
+			<%= c.course_number %>
+		<% end %>
+	<% end %>
+	<br>
+<% end %>
 <h1>Listing courses</h1>
 <% directory = 'app/assets/javascripts/json' %>
 <% Dir.foreach(directory) do |x| %>

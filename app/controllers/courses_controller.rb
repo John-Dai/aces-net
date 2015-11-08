@@ -55,6 +55,15 @@ class CoursesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def acceptfriend
+  	@target = Person.find(params[:id_params])
+  	current_person.approve @target
+  	respond_to do |format|
+      format.html { redirect_to courses_url, notice: 'Friend request accepted.' }
+      format.json { head :no_content }
+    end
+  end
 
   # PATCH/PUT /courses/1
   # PATCH/PUT /courses/1.json
