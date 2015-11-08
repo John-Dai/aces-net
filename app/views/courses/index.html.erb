@@ -87,8 +87,7 @@ function myFunction(arr) {
     	<% if person.id!=current_person.id %>
       <tr>
         <td><%= person.email %></td>
-        <% params = ActionController::Parameters.new(course:{}) %>
-        <td><%= button_to "Add", action: "create", id_params: person.id, params: params %></td>
+        <td><%= button_to "Add", action: "addfriend", id_params: person.id %></td>
       </tr>
       <% end %>
     <% end %>

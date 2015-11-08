@@ -48,8 +48,12 @@ class CoursesController < ApplicationController
   end
   
   def addfriend
-  	@target = Person.find(id_param)
+  	@target = Person.find(params[:id_params])
   	current_person.invite @target
+  	respond_to do |format|
+      format.html { redirect_to courses_url, notice: 'Friend request sent' }
+      format.json { head :no_content }
+    end
   end
 
   # PATCH/PUT /courses/1
