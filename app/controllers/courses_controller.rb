@@ -1,10 +1,11 @@
 class CoursesController < ApplicationController
   before_action :set_course, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_student!
+  before_action :authenticate_person!
   # GET /courses
   # GET /courses.json
   def index
     @courses = Course.all
+    @people = Person.all
   end
 
   # GET /courses/1
@@ -25,7 +26,7 @@ class CoursesController < ApplicationController
   # POST /courses.json
   def create
   	@courses =  Course.all
-    @course = current_student.courses.new(course_params)
+    @course = current_person.courses.new(course_params)
     @courses.each do |c|
     	if c.subject==@course.subject && c.course_number==@course.course_number
     		respond_to do |format|
@@ -44,6 +45,11 @@ class CoursesController < ApplicationController
         format.json { render json: @course.errors, status: :unprocessable_entity }
       end
     end
+  end
+  
+  def addfriend
+  	@target = Person.find(id_param)
+  	current_person.invite @target
   end
 
   # PATCH/PUT /courses/1

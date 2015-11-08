@@ -61,7 +61,7 @@ function myFunction(arr) {
 
   <tbody>
     <% @courses.each do |course| %>
-    	<% if course.student_id = current_student.id %>
+    	<% if course.person_id = current_person.id %>
       <tr>
         <td><%= course.subject %></td>
         <td><%= course.course_number %></td>
@@ -69,6 +69,26 @@ function myFunction(arr) {
         <td><%= link_to 'Show', course %></td>
         <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+      <% end %>
+    <% end %>
+  </tbody>
+</table>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @people.each do |person| %>
+    	<% if person.id!=current_person.id %>
+      <tr>
+        <td><%= person.email %></td>
+        <% params = ActionController::Parameters.new(course:{}) %>
+        <td><%= button_to "Add", action: "create", id_params: person.id, params: params %></td>
       </tr>
       <% end %>
     <% end %>

@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+  resources :dudes
+
+  devise_for :people
+  resources :people
+
   devise_for :students
   resources :students
 

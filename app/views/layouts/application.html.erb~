@@ -7,7 +7,12 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
+<li class="button">
+	<%= link_to('Logout', destroy_student_session_path, :method => :delete) %>
+</li>
 <%= yield %>
 
 </body>
