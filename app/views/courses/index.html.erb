@@ -1,5 +1,19 @@
-<div id="id01"></div>
+<style type="text/css">
+  #container {
+    max-width: 400px;
+    height: 400px;
+    margin: auto;
+  }
+</style>
+<div id="container"></div>
 <script>
+  sigma.parsers.json('data.json', {
+    container: 'container',
+    settings: {
+      defaultNodeColor: '#ec5148'
+    }
+  });
+
 /*
 var xmlhttp = new XMLHttpRequest();
 var access_token = "e35d5ffd6583386d1d06cd206ac9f35b"
@@ -140,32 +154,3 @@ function myFunction(arr) {
 			<br>
 		<% end %>
 <% end %>
-<!--
-<table>
-  <thead>
-    <tr>
-      <th>Subject</th>
-      <th>Course number</th>
-      <th>Title</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @courses.each do |course| %>
-    	<% if course.person_id = current_person.id %>
-      <tr>
-        <td><%= course.subject %></td>
-        <td><%= course.course_number %></td>
-        <td><%= course.title %></td>
-        <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
-        <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
-<br>
--->
-
