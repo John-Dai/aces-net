@@ -1,0 +1,1 @@
+{"ssr_get_courses_resp":{"course_search_result":{"ssr_crs_gen_msg":"The Search has returned no results","ssr_crs_srch_count":"0","subjects":{"subject":{"institution":"DUKEU","institution_lov_descr":"Duke University","subject":"AFA@","subject_lov_descr":"AFA (UNC-CH)","subject_crs_count":"0","course_summaries":null}}},"@xmlns":"http://xmlns.oracle.com/Enterprise/Tools/services"}}
