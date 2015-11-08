@@ -115,20 +115,22 @@ function myFunction(arr) {
 <% directory = 'app/assets/javascripts/json' %>
 <% Dir.foreach(directory) do |x| %>
 	<% next if x == '.' or x == '..' %>
-	<% file = File.read(directory+'/'+x) %>
-	<%= x %>
-	<br>
-	<% data_hash = JSON.parse(file) %>
-	<% arr=data_hash["ssr_get_courses_resp"]["course_search_result"]["subjects"]["subject"]["course_summaries"]["course_summary"] %>
-	<% arr.each do |child| %>
-		<%= child["subject"] %>
-		<%= child["catalog_nbr"] %>
-		<%= child["course_title_long"] %>
-		<% params = ActionController::Parameters.new(course: {subject: child["subject"], course_number: child["catalog_nbr"], title: child["course_title_long"]}) %>
-		<%= button_to "Add", action: "create", params: params %>
+	<% xform=x.split('.')[0] %>
+	<%=link_to xform, params.merge(:cat => xform)%>
+<% end %>
+<% if params[:cat]!=nil %>
+		<% file = File.read(directory+'/'+params[:cat]+'.txt') %>
 		<br>
-	<% end %>
-	<br>
+		<% data_hash = JSON.parse(file) %>
+		<% arr=data_hash["ssr_get_courses_resp"]["course_search_result"]["subjects"]["subject"]["course_summaries"]["course_summary"] %>
+		<% arr.each do |child| %>
+			<%= child["subject"] %>
+			<%= child["catalog_nbr"] %>
+			<%= child["course_title_long"] %>
+			<% params = ActionController::Parameters.new(course: {subject: child["subject"], course_number: child["catalog_nbr"], title: child["course_title_long"]}) %>
+			<%= button_to "Add", action: "create", params: params %>
+			<br>
+		<% end %>
 <% end %>
 
 <!--
