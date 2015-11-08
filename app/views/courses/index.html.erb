@@ -1,5 +1,3 @@
-
-<div id="container"></div>
 <script>
 /*
 var xmlhttp = new XMLHttpRequest();
@@ -75,7 +73,7 @@ function myFunction(arr) {
       <th>Subject</th>
       <th>Course number</th>
       <th>Title</th>
-      <th colspan="3"></th>
+      <th colspan="2"></th>
     </tr>
   </thead>
   <tbody>
@@ -86,7 +84,6 @@ function myFunction(arr) {
         <td><%= course.course_number %></td>
         <td><%= course.title %></td>
         <td><%= link_to 'Show', course %></td>
-        <td><%= link_to 'Edit', edit_course_path(course) %></td>
         <td><%= link_to 'Destroy', course, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
       <% end %>
@@ -103,6 +100,7 @@ function myFunction(arr) {
 <% end %>
 <h1>Users</h1>
 <table>
+	<% if !params[:user].nil? %>
   <thead>
     <tr>
       <th>Name</th>
@@ -118,6 +116,7 @@ function myFunction(arr) {
       <% end %>
     <% end %>
   </tbody>
+  <% end %>
 </table>
 
 <h1>Courses</h1>
